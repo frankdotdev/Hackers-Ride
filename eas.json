@@ -10,6 +10,10 @@
     },
     "preview": {
       "distribution": "internal",
+      "env": {
+        "GRADLE_OPTS": "-Djava.net.preferIPv4Stack=true -Xmx2048m",
+        "JAVA_TOOL_OPTIONS": "-Djava.net.preferIPv4Stack=true"
+      },
       "android": {
         "buildType": "apk"
       }
