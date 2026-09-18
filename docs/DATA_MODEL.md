@@ -16,7 +16,7 @@ All data lives in a single on-device SQLite database, `hackers_ride.db`, created
 | `promo_codes` | The four demo codes below |
 | `settings` | Persisted theme (`light`/`dark`) |
 
-`ride_events` / `ride_locations` from the original brief are intentionally folded into the `rides.status` field plus the client-side animation in `SimulatedMap` rather than a separate event-log table — see `ROADMAP.md` for extending this into a full event history if needed.
+I keep `ride_events` and location history simple by tracking the ride lifecycle through the `rides.status` field and animating movement client-side in `SimulatedMap` rather than storing huge GPS event tables.
 
 ## Vehicle types & fare formula
 
