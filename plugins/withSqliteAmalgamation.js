@@ -3,19 +3,12 @@ const path = require('path');
 const { withDangerousMod, withGradleProperties } = require('@expo/config-plugins');
 
 function withSqliteAmalgamation(config) {
-  // 1. Configure gradle.properties for IPv4, memory, and Prefab compatibility
+  // 1. Configure gradle.properties for IPv4 compatibility
   config = withGradleProperties(config, (config) => {
     // Force IPv4 so Gradle can reach sqlite.org if local vendor zip is missing
     config.modResults.push({
       type: 'property',
       key: 'systemProp.java.net.preferIPv4Stack',
-      value: 'true',
-    });
-    // Fix Prefab [CXX1210] "No compatible library found" for fbjni
-    // This disables automatic Prefab component creation which can conflict on newer NDKs
-    config.modResults.push({
-      type: 'property',
-      key: 'android.disableAutomaticComponentCreation',
       value: 'true',
     });
     return config;
